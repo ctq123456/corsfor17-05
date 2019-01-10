@@ -41,7 +41,7 @@
 
 
                 $.ajax({
-                    url: 'http://localhost:3000/profile',
+                    url: 'http://10.30.29.56/name/profile.php',
                     type: 'GET',
                     dataType: 'json',
                     xhrFields:{withCredentials:true},
@@ -50,9 +50,21 @@
                     }
                 })
 
+                $.ajax({
+                    url: 'http://10.30.29.56/name/session.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    xhrFields:{withCredentials:true},
+                    success: function (res) {
+                        if (res.message === 'errors') {
+                            location.href = 'unlogin.html';
+                        }
+                    }
+                })
+
                 $('#btnLogout').click(function () {
                     $.ajax({
-                        url: 'http://localhost:3000/logout',
+                        url: 'http://10.30.29.56/name/logout.php',
                         type: 'GET',
                         contentType: 'application/json;charset=utf-8',
                         xhrFields:{withCredentials:true},
@@ -63,6 +75,8 @@
                         }
                     })
                 })
+
+
             })
         </script>
     </body>
